@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   resources :main
   resource :password, only: [:edit, :update]
   namespace :authentication, path: '', as: '' do
-    resources :users, only: [:show, :new, :create, :edit, :update]
+    resources :users do
+      collection do
+        get 'edit_password'
+        patch 'update_password'
+      end
+    end
     resources :sessions, only: [:new, :create]
   end
 
