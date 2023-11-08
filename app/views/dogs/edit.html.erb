@@ -1,0 +1,45 @@
+<h1>Modificar perro</h1>
+ <%= form_with(model: @dog, local: true) do |form| %>
+        <% if @dog.errors.any? %>
+          <div class="alert alert-danger">
+            <ul>
+              <% @dog.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+  
+  <div class="form-group">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :raza %>
+    <%= form.text_field :raza, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sexo %>
+    <%= form.select :sexo, ["Macho", "Hembra"], {}, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :color %>
+    <%= form.text_field :color, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :edad %>
+    <%= form.number_field :edad, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :peso %>
+    <%= form.number_field :peso, step: 0.01, class: "form-control", style: "width: 180px;" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Guardar cambios", class: "btn btn-success" %>
+<% end %>

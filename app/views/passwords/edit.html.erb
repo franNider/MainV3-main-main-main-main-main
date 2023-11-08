@@ -1,0 +1,33 @@
+<h1>Modificar Contraseña</h1>
+<%= form_with(model: @user) do |f| %>
+ <div class="alert alert.prymary">
+ <% @user.errors.full_messages.each do |error| %>
+    <li>  
+      <%= error %>
+    </li>
+  <% end %>
+</div>
+
+  <div class="form-group">
+    <div class="form-group col-md-2">
+      <%= f.label :current_password, 'Contraseña actual' %>
+      <%= f.password_field :current_password, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :password, 'Nueva contraseña' %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+    <div class="form-row">
+    <div class="form-group col-md-1.5">
+      <%= f.submit 'Guardar contraseña', class: 'btn btn-primary' %>
+      </div>
+      <div class="form-group">
+      <%= link_to 'Volver', user_path(@user), class: 'btn btn-secondary' %>
+    </div>
+   </div>
+  </div>
+</div>
+<% end %>
+

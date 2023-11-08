@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h3">Cargar Chequeo</h1>
+        </div>
+        <div class="card-body">
+          <%= render "form", chequeo: @chequeo %>
+        </div>
+      </div>
+      <div class="mt-4">
+        <%= link_to "Volver", "/users/show", class: "btn btn-secondary btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<h1>Modificar vacuna</h1>
+<%= form_with(model: vacuna) do |form| %>
+  <% if vacuna.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% vacuna.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="form-group">
+  <%= form.label :dog_id, "Perro" %>
+  <%= form.collection_select(:dog_id, current_user.dog.all, :id, :nombre, { prompt: "Selecciona un perro" }, class: "form-control") %>
+</div>
+
+<div class="form-group">
+  <%= form.label :nombre %>
+  <%= form.text_field :nombre, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= form.label :fecha %>
+  <%= form.date_field :fecha, class: "form-control" %>
+</div>
+
+<div class="text-center">
+  <%= form.submit "Cargar Vacuna", class: "btn btn-primary" %>
+</div>
+<% end %>

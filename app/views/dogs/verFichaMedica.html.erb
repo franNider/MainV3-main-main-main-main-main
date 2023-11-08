@@ -1,0 +1,68 @@
+<h1 class="h3 mb-2 text-gray-800">Ficha Médica de <%= @dog.nombre %></h1>
+
+<% if @dog.vacuna.all.empty? %>
+  <h2>No hay información de ninguna vacuna en <%= @dog.nombre %></h2>
+<% else %>
+  <%= label_tag 'vacuna_label', 'Vacuna:', class: 'h4' %>
+  <br>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="tablaVacunas" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dog.vacuna.each do |v| %>
+              <tr id="vacuna_<%= v.id %>" >
+                <td><%= v.nombre %></td>
+                <td><%= v.fecha %></td>
+                <td><%= button_to 'Eliminar', v, method: :delete, class: 'btn btn-danger', onclick: "return confirm('¿Estás seguro de que deseas eliminar esta vacuna?');" %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<br>
+<br>
+
+<% if @dog.chequeo.all.empty? %>
+  <h2>No hay información de ningún chequeo en <%= @dog.nombre %></h2>
+<% else %>
+  <%= label_tag 'chequeo_label', 'Chequeo:', class: 'h4' %>
+  <br>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="tablaChequeos" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dog.chequeo.all.each do |c| %>
+              <tr id="Chequeo_<%= c.id %>" >
+                <td><%= c.descripcion %></td>
+                <td><%= c.fecha %></td>
+                <td><%= button_to 'Eliminar', c, method: :delete, class: 'btn btn-danger', onclick: "return confirm('¿Estás seguro de que deseas eliminar este chequeo?');" %> </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="mt-4">
+  <%= link_to "Volver", "/users/show", class: "btn btn-secondary" %>
+</div>
